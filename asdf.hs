@@ -4,10 +4,7 @@ module Asdf where
 
 import Foreign.C.Types
 
-asdf :: Int -> Int
+asdf :: CInt -> CInt
 asdf asdf = 3
 
-asdf_hs :: CInt -> CInt
-asdf_hs = fromIntegral . asdf . fromIntegral
-
-foreign export ccall asdf_hs :: CInt -> CInt
+foreign export ccall asdf :: CInt -> CInt
