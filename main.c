@@ -1,6 +1,6 @@
 #include <HsFFI.h>
 #ifdef __GLASGOW_HASKELL__
-#include "safe_stub.h"
+#include "asdf_stub.h"
 #endif
 #include <stdio.h>
 

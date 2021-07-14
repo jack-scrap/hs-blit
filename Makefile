@@ -11,4 +11,4 @@ c: main.c
 	$(HC) --make -no-hs-main -optc-O $< asdf -o main
 
 clean:
-	rm *.hi *.o main
+	rm *_stub.h *.hi *.o main
