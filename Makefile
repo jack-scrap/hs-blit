@@ -4,11 +4,11 @@ HC=ghc
 
 all: hs c
 
-hs: safe.hs
+hs: asdf.hs
 	$(HC) -c -O $<
 
 c: main.c
-	$(HC) --make -no-hs-main -optc-O $< safe -o main
+	$(HC) --make -no-hs-main -optc-O $< asdf -o main
 
 clean:
 	rm *.hi *.o main
