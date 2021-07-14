@@ -5,7 +5,7 @@ module Safe where
 import Foreign.C.Types
 
 asdf :: Int -> Int
-asdf n = 3
+asdf asdf = 3
 
 asdf_hs :: CInt -> CInt
 asdf_hs = fromIntegral . asdf . fromIntegral
