@@ -1,14 +1,14 @@
-CC=gcc
+HC=ghc
 
 .PHONY: clean
 
-all: make
+all: hs c
 
-main.o: main.c
-	$(CC) -c $< -o $@
+hs: Safe.hs
+	$(HC) -c -O $<
 
-make: main.o
-	$(CC) $^
+c: test.c
+	$(HC) --make -no-hs-main -optc-O $< Safe -o test
 
 clean:
-	rm *.o a.out
+	rm *.hi *.o test
