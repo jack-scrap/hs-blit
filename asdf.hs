@@ -1,6 +1,6 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
 
-module Safe where
+module Asdf where
 
 import Foreign.C.Types
 
