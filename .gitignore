@@ -1,5 +1,6 @@
 *.o
 
+*_stub.h
 *.hi
 
 test
