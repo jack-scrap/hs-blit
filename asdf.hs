@@ -5,8 +5,7 @@ module Safe where
 import Foreign.C.Types
 
 asdf :: Int -> Int
-asdf n = fibs !! n
-    where fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+asdf n = 3
 
 asdf_hs :: CInt -> CInt
 asdf_hs = fromIntegral . asdf . fromIntegral
