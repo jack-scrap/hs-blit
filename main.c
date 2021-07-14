@@ -7,7 +7,7 @@
 int main() {
 	hs_init(0, NULL);
 
-	printf("Fibonacci: %d\n", asdf_hs(42));
+	printf("%d\n", asdf_hs(42));
 
 	return 0;
 }
