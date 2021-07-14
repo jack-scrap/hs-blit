@@ -1,6 +1,6 @@
-*.o
-
 *_stub.h
 *.hi
+
+*.o
 
 a.out
