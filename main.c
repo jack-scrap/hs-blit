@@ -5,11 +5,9 @@
 #include <stdio.h>
 
 int main() {
-	int i;
 	hs_init(0, NULL);
 
-	i = fibonacci_hs(42);
-	printf("Fibonacci: %d\n", i);
+	printf("Fibonacci: %d\n", fibonacci_hs(42));
 
 	hs_exit();
 	return 0;
