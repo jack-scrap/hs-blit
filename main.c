@@ -4,9 +4,9 @@
 #endif
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+int main() {
 	int i;
-	hs_init(&argc, &argv);
+	hs_init(0, NULL);
 
 	i = fibonacci_hs(42);
 	printf("Fibonacci: %d\n", i);
