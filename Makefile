@@ -7,8 +7,8 @@ all: hs c
 hs: safe.hs
 	$(HC) -c -O $<
 
-c: test.c
-	$(HC) --make -no-hs-main -optc-O $< safe -o test
+c: main.c
+	$(HC) --make -no-hs-main -optc-O $< safe -o main
 
 clean:
-	rm *.hi *.o test
+	rm *.hi *.o main
