@@ -9,6 +9,5 @@ int main() {
 
 	printf("Fibonacci: %d\n", fibonacci_hs(42));
 
-	hs_exit();
 	return 0;
 }
