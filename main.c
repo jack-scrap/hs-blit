@@ -1,8 +1,7 @@
 #include <HsFFI.h>
-#ifdef __GLASGOW_HASKELL__
-#include "asdf_stub.h"
-#endif
 #include <stdio.h>
+
+#include "asdf_stub.h"
 
 int main() {
 	hs_init(0, NULL);
