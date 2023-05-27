@@ -17,9 +17,9 @@ typedef struct {
 	unsigned int _a;
 } Col;
 
-uint32_t rmask = 0xff000000;
+uint32_t rmask = 0x0000ff00;
 uint32_t gmask = 0x00ff0000;
-uint32_t bmask = 0x0000ff00;
+uint32_t bmask = 0xff000000;
 uint32_t amask = 0x000000ff;
 
 Col grey[2] = {
