@@ -1,5 +1,7 @@
 HC=ghc
 
+LDFLAGS=-lSDL2
+
 .PHONY: all
 all: stub make
 
@@ -9,7 +11,7 @@ stub: asdf.hs
 
 .PHONY: make
 make: main.c
-	$(HC) --make -no-hs-main -optc-O $< asdf -lSDL2
+	$(HC) --make -no-hs-main -optc-O $< asdf $(LDFLAGS)
 
 .PHONY: clean
 clean:
