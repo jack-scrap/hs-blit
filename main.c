@@ -73,7 +73,7 @@ int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 			};
 
 			if (solid()) {
-				if (blitPix(data, st, red)) {
+				if (blitPix(data, st, purple[0])) {
 					err(ERR_BLIT_PIX);
 				}
 			}
@@ -100,7 +100,7 @@ int clear(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 		res[Y]
 	};
 
-	blitRect(data, bound, origin, black);
+	blitRect(data, bound, origin, grey[0]);
 
 	return 0;
 }
