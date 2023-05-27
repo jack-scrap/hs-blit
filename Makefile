@@ -1,6 +1,6 @@
 HC=ghc
 
-EXEC=a.out
+EXEC=hs_blit
 
 LDFLAGS=-lSDL2
 
