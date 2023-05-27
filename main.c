@@ -7,8 +7,6 @@
 #include "err.h"
 #include "shad_stub.h"
 
-#define CHAN_NO 3 + 1
-
 const unsigned int res[2] = {
 	800,
 	600

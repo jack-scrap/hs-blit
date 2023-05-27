@@ -1,6 +1,8 @@
 #ifndef COL_H
 #define COL_H
 
+#define CHAN_NO 3 + 1
+
 enum {
 	R,
 	G,
