@@ -105,12 +105,52 @@ int clear(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 	return 0;
 }
 
+bool scr(char* filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer) {
+	SDL_Surface* saveSurface = NULL;
+	SDL_Surface* infoSurface = NULL;
+	infoSurface = SDL_GetWindowSurface(SDLWindow);
+
+	if (infoSurface == NULL) {
+		printf("%s%s\n", "Failed to create info surface from window in save(string), SDL_GetError() - ", SDL_GetError());
+	} else {
+		unsigned char* pixels[infoSurface->w * infoSurface->h * infoSurface->format->BytesPerPixel];
+		if (!pixels) {
+			printf("Unable to allocate memory for screenshot pixel data buffer!\n");
+
+			return false;
+		} else {
+			if (SDL_RenderReadPixels(SDLRenderer, &infoSurface->clip_rect, infoSurface->format->format, pixels, infoSurface->w * infoSurface->format->BytesPerPixel) != 0) {
+				printf("%s%s\n", "Failed to read pixel data from SDL_Renderer object. SDL_GetError() - ", SDL_GetError());
+
+				return false;
+			} else {
+				saveSurface = SDL_CreateRGBSurfaceFrom(pixels, infoSurface->w, infoSurface->h, infoSurface->format->BitsPerPixel, infoSurface->w * infoSurface->format->BytesPerPixel, infoSurface->format->Rmask, infoSurface->format->Gmask, infoSurface->format->Bmask, infoSurface->format->Amask);
+
+				if (saveSurface == NULL) {
+					printf("%s%s\n", "Couldn't create SDL_Surface from renderer pixel data. SDL_GetError() - ", SDL_GetError());
+
+					return false;
+				}
+
+				SDL_SaveBMP(saveSurface, filepath);
+				SDL_FreeSurface(saveSurface);
+				saveSurface = NULL;
+			}
+		}
+
+		SDL_FreeSurface(infoSurface);
+		infoSurface = NULL;
+	}
+
+	return true;
+}
+
 int main() {
 	// Initialize
 	hs_init(0, NULL);
 
 	SDL_Window* win = SDL_CreateWindow("asdf", 0, 0, res[X], res[Y], 0);
-	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, 0);
+	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, SDL_RENDERER_SOFTWARE);
 
 	SDL_Texture* tex = SDL_CreateTexture(rend, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, res[X], res[Y]);
 
@@ -139,6 +179,12 @@ int main() {
 		while (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				open = false;
+			}
+
+			if (e.type == SDL_KEYDOWN) {
+				if (e.key.keysym.sym == SDLK_F12) {
+					scr("asdf.bmp", win, rend);
+				}
 			}
 		}
 
