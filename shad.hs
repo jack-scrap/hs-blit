@@ -15,7 +15,7 @@ check :: CInt -> CInt -> CInt -> CInt
 check x y stride = toEnum $ fromEnum $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
 
 rect :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt -> CInt
-rect x y startX startY wd ht = toEnum $ fromEnum $ x >= startX && x <= startX + wd && y >= startY && y <= startY + ht
+rect x y posX posY wd ht = toEnum $ fromEnum $ x >= posX && x <= posX + wd && y >= posY && y <= posY + ht
 
 foreign export ccall solid :: CInt -> CInt
 foreign export ccall stripe :: CInt -> CInt -> CInt
