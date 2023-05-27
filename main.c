@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <stdbool.h>
 #include <HsFFI.h>
 
@@ -132,7 +133,7 @@ bool scr(char* filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer) {
 					return false;
 				}
 
-				SDL_SaveBMP(saveSurface, filepath);
+				IMG_SavePNG(saveSurface, filepath);
 				SDL_FreeSurface(saveSurface);
 				saveSurface = NULL;
 			}
@@ -183,7 +184,7 @@ int main() {
 
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_F12) {
-					scr("asdf.bmp", win, rend);
+					scr("asdf.png", win, rend);
 				}
 			}
 		}

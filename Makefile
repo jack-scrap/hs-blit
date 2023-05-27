@@ -2,7 +2,7 @@ HC=ghc
 
 EXEC=hs_blit
 
-LDFLAGS=-lSDL2
+LDFLAGS=-lSDL2 -lSDL2_image
 
 .PHONY: all
 all: stub $(EXEC)
