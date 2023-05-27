@@ -8,8 +8,12 @@ import Data.Bits
 solid :: CInt -> CInt
 solid i = 1
 
+stripe :: CInt -> CInt -> CInt
+stripe x stride = toEnum $ fromEnum $ mod x (stride * 2) > stride
+
 check :: CInt -> CInt -> CInt -> CInt
 check x y stride = toEnum $ fromEnum $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
 
 foreign export ccall solid :: CInt -> CInt
+foreign export ccall stripe :: CInt -> CInt -> CInt
 foreign export ccall check :: CInt -> CInt -> CInt -> CInt
