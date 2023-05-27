@@ -72,7 +72,9 @@ int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 				y
 			};
 
-			if (solid()) {
+			int i = (st._y * res[X]) + st._x;
+
+			if (solid(i)) {
 				if (blitPix(data, st, purple[0])) {
 					err(ERR_BLIT_PIX);
 				}
