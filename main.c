@@ -184,7 +184,7 @@ int main() {
 
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_F12) {
-					scr("o/asdf.png", win, rend);
+					scr("o/scr.png", win, rend);
 				}
 			}
 		}
