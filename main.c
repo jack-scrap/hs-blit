@@ -13,6 +13,8 @@ const unsigned int res[2] = {
 	600
 };
 
+int t = 0;
+
 int blitPix(unsigned char data[res[Y]][res[X]][CHAN_NO], Coord st, Col col) {
 	if (data == NULL) {
 		err(ERR_NULL_PTR);
@@ -160,8 +162,6 @@ int main() {
 	// Clear
 	clear(data);
 
-	blitShad(data, solid);
-
 	SDL_Surface* surf = SDL_CreateRGBSurfaceFrom(data, res[X], res[Y], (CHAN_NO) * 8, (CHAN_NO) * res[X], rmask, gmask, bmask, amask);
 
 	const SDL_Rect rect = {
@@ -170,8 +170,6 @@ int main() {
 		res[X],
 		res[Y]
 	};
-
-	SDL_UpdateTexture(tex, &rect, surf->pixels, surf->pitch);
 
 	// Draw
 	bool open = true;
@@ -189,10 +187,16 @@ int main() {
 			}
 		}
 
+		blitShad(data, solid);
+
+		SDL_UpdateTexture(tex, &rect, surf->pixels, surf->pitch);
+
 		SDL_RenderDrawRect(rend, &rect);
 
 		SDL_RenderCopy(rend, tex, NULL, NULL);
 		SDL_RenderPresent(rend);
+
+		t++;
 	}
 
 	return 0;
