@@ -12,7 +12,7 @@ stub: shad.hs
 	$(HC) -c -O $<
 
 $(EXEC): main.c
-	$(HC) --make -no-hs-main -optc-O $< shad -o $@ $(LDFLAGS)
+	$(HC) --make -no-hs-main -optc-O -Wno-tabs $< shad -o $@ $(LDFLAGS)
 
 .PHONY: clean
 clean:
