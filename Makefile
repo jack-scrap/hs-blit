@@ -1,5 +1,7 @@
 HC=ghc
 
+EXEC=a.out
+
 LDFLAGS=-lSDL2
 
 .PHONY: all
@@ -15,4 +17,4 @@ make: main.c
 
 .PHONY: clean
 clean:
-	rm *_stub.h *.hi *.o a.out
+	rm *_stub.h *.hi *.o $(EXEC)
