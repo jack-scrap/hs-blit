@@ -106,7 +106,7 @@ int clear(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 	return 0;
 }
 
-bool scr(char* filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer) {
+bool scrShot(char* filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer) {
 	SDL_Surface* saveSurface = NULL;
 	SDL_Surface* infoSurface = NULL;
 	infoSurface = SDL_GetWindowSurface(SDLWindow);
@@ -184,7 +184,7 @@ int main() {
 
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_F12) {
-					scr("o/scr.png", win, rend);
+					scrShot("o/scr.png", win, rend);
 				}
 			}
 		}
