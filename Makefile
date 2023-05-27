@@ -8,7 +8,7 @@ stub: asdf.hs
 	$(HC) -c -O $<
 
 make: main.c
-	$(HC) --make -no-hs-main -optc-O $< asdf
+	$(HC) --make -no-hs-main -optc-O $< asdf -lSDL2
 
 clean:
 	rm *_stub.h *.hi *.o a.out
