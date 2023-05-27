@@ -58,6 +58,31 @@ int blitRect(unsigned char data[res[Y]][res[X]][CHAN_NO], Coord sz, Coord pos, C
 	return 0;
 }
 
+int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
+	if (data == NULL) {
+		err(ERR_NULL_PTR);
+
+		return 1;
+	}
+
+	for (int y = 0; y < res[Y]; y++) {
+		for (int x = 0; x < res[X]; x++) {
+			Coord st = {
+				x,
+				y
+			};
+
+			if (solid()) {
+				if (blitPix(data, st, red)) {
+					err(ERR_BLIT_PIX);
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+
 int clear(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 	if (data == NULL) {
 		err(ERR_NULL_PTR);
@@ -93,6 +118,8 @@ int main() {
 
 	// Clear
 	clear(data);
+
+	blitShad(data);
 
 	SDL_Surface* surf = SDL_CreateRGBSurfaceFrom(data, res[X], res[Y], (CHAN_NO) * 8, (CHAN_NO) * res[X], rmask, gmask, bmask, amask);
 
