@@ -23,6 +23,14 @@ rect x y posX posY wd ht = toEnum $ fromEnum $ inRng x wd (posX + wd) || inRng y
 border :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt
 border x y wd ht thick = toEnum $ fromEnum $ not (inRng x thick (wd - thick)) || not (inRng y thick (ht - thick))
 
+prime :: CInt -> CInt
+prime n = toEnum $ fromEnum $ if n > 1
+	then null [
+		x | x <- [2..n - 1],
+		n `mod` x == 0
+	]
+	else False
+
 rightTri :: CInt -> CInt -> CInt
 rightTri x y = toEnum $ fromEnum $ x < y
 
@@ -31,4 +39,5 @@ foreign export ccall stripe :: CInt -> CInt -> CInt
 foreign export ccall check :: CInt -> CInt -> CInt -> CInt
 foreign export ccall rect :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt -> CInt
 foreign export ccall border :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt
+foreign export ccall prime :: CInt -> CInt
 foreign export ccall rightTri :: CInt -> CInt -> CInt
