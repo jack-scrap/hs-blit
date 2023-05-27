@@ -5,7 +5,7 @@
 #include "math.h"
 #include "col.h"
 #include "err.h"
-#include "asdf_stub.h"
+#include "shad_stub.h"
 
 #define CHAN_NO 3 + 1
 

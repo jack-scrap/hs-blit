@@ -8,11 +8,11 @@ LDFLAGS=-lSDL2
 all: stub $(EXEC)
 
 .PHONY: stub
-stub: asdf.hs
+stub: shad.hs
 	$(HC) -c -O $<
 
 $(EXEC): main.c
-	$(HC) --make -no-hs-main -optc-O $< asdf -o $@ $(LDFLAGS)
+	$(HC) --make -no-hs-main -optc-O $< shad -o $@ $(LDFLAGS)
 
 .PHONY: clean
 clean:
