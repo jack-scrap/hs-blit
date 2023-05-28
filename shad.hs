@@ -34,6 +34,10 @@ prime n = toEnum $ fromEnum $ if n > 1
 rightTri :: CInt -> CInt -> CInt
 rightTri x y = toEnum $ fromEnum $ x < y
 
+se :: CInt -> CInt -> CInt -> CInt -> CInt
+se x y posX posY = toEnum $ fromEnum $ inRng x posX (posX + (2 * sz)) || inRng y posY (posY + (2 * sz))
+	where sz = 20
+
 foreign export ccall solid :: CInt -> CInt
 foreign export ccall stripe :: CInt -> CInt -> CInt
 foreign export ccall check :: CInt -> CInt -> CInt -> CInt
@@ -41,3 +45,4 @@ foreign export ccall rect :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt -> CIn
 foreign export ccall border :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt
 foreign export ccall prime :: CInt -> CInt
 foreign export ccall rightTri :: CInt -> CInt -> CInt
+foreign export ccall se :: CInt -> CInt -> CInt -> CInt -> CInt
