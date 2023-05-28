@@ -114,7 +114,8 @@ bool scrShot(char* filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer) {
 	if (infoSurface == NULL) {
 		printf("%s%s\n", "Failed to create info surface from window in save(string), SDL_GetError() - ", SDL_GetError());
 	} else {
-		unsigned char* pixels[infoSurface->w * infoSurface->h * infoSurface->format->BytesPerPixel];
+		unsigned char pixels[infoSurface->w * infoSurface->h * infoSurface->format->BytesPerPixel];
+
 		if (!pixels) {
 			printf("Unable to allocate memory for screenshot pixel data buffer!\n");
 
