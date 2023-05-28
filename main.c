@@ -31,7 +31,6 @@ int blitPix(unsigned char data[res[Y]][res[X]][CHAN_NO], Coord st, Col col) {
 	data[st._y][st._x][R] = col._r;
 	data[st._y][st._x][G] = col._g;
 	data[st._y][st._x][B] = col._b;
-	data[st._y][st._x][A] = col._a;
 
 	return 0;
 }
@@ -155,7 +154,7 @@ int main() {
 	SDL_Window* win = SDL_CreateWindow("asdf", 0, 0, res[X], res[Y], 0);
 	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, SDL_RENDERER_SOFTWARE);
 
-	SDL_Texture* tex = SDL_CreateTexture(rend, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, res[X], res[Y]);
+	SDL_Texture* tex = SDL_CreateTexture(rend, SDL_PIXELFORMAT_RGB24, SDL_TEXTUREACCESS_TARGET, res[X], res[Y]);
 
 	unsigned char data[res[Y]][res[X]][CHAN_NO];
 

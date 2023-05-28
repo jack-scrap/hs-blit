@@ -1,7 +1,7 @@
 #ifndef COL_H
 #define COL_H
 
-#define CHAN_NO 3 + 1
+#define CHAN_NO 3
 
 enum {
 	R,
@@ -14,7 +14,6 @@ typedef struct {
 	unsigned int _r;
 	unsigned int _g;
 	unsigned int _b;
-	unsigned int _a;
 } Col;
 
 uint32_t rmask = 0x0000ff00;
@@ -26,13 +25,11 @@ Col grey[2] = {
 	{
 		34,
 		34,
-		34,
-		255
+		34
 	}, {
 		102,
 		102,
-		102,
-		255
+		102
 	}
 };
 
@@ -40,13 +37,11 @@ Col purple[2] = {
 	{
 		69,
 		59,
-		87,
-		255
+		87
 	}, {
 		97,
 		82,
-		134,
-		255
+		134
 	}
 };
 
