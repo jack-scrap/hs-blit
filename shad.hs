@@ -18,7 +18,7 @@ check :: CInt -> CInt -> CInt -> CInt
 check x y stride = toEnum $ fromEnum $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
 
 rect :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt -> CInt
-rect x y posX posY wd ht = toEnum $ fromEnum $ inRng x wd (posX + wd) || inRng y ht (posY + ht)
+rect x y posX posY wd ht = toEnum $ fromEnum $ inRng x posX (posX + wd) && inRng y posY (posY + ht)
 
 border :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt
 border x y wd ht thick = toEnum $ fromEnum $ not (inRng x thick (wd - thick)) || not (inRng y thick (ht - thick))
