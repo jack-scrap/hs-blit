@@ -11,10 +11,10 @@ all: stub $(EXEC) mk_o
 
 .PHONY: stub
 stub: shad.hs
-	$(HC) -c -O $<
+	$(HC) -Wno-tabs -c -O $<
 
 $(EXEC): main.c
-	$(HC) --make -no-hs-main -optc-O -Wno-tabs $< shad -o $@ $(LDFLAGS)
+	$(HC) --make -no-hs-main -optc-O $< shad -o $@ $(LDFLAGS)
 
 .PHONY: mk_o
 mk_o:
