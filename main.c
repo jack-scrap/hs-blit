@@ -109,8 +109,7 @@ int clear(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 
 bool scrShot(char* filepath, SDL_Window* SDLWindow, SDL_Renderer* SDLRenderer) {
 	SDL_Surface* saveSurface = NULL;
-	SDL_Surface* infoSurface = NULL;
-	infoSurface = SDL_GetWindowSurface(SDLWindow);
+	SDL_Surface* infoSurface = SDL_GetWindowSurface(SDLWindow);
 
 	if (infoSurface == NULL) {
 		printf("%s%s\n", "Failed to create info surface from window in save(string), SDL_GetError() - ", SDL_GetError());
