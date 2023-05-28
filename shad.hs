@@ -27,7 +27,7 @@ prime :: CInt -> CInt
 prime n = toEnum $ fromEnum $ if n > 1
 	then null [
 		x | x <- [2..n - 1],
-		n `mod` x == 0
+		mod n x == 0
 	]
 	else False
 
