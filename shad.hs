@@ -5,6 +5,12 @@ module Shad where
 import Foreign.C.Types
 import Data.Bits
 
+wd :: Int
+wd = 800
+
+ht :: Int
+ht = 600
+
 inRng :: CInt -> CInt -> CInt -> Bool
 inRng n floor roof = n >= floor && n <= roof
 
