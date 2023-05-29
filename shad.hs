@@ -5,10 +5,12 @@ module Shad where
 import Foreign.C.Types
 import Data.Bits
 
-wd :: Int
+type Dim = Int
+
+wd :: Dim
 wd = 800
 
-ht :: Int
+ht :: Dim
 ht = 600
 
 inRng :: CInt -> CInt -> CInt -> Bool
