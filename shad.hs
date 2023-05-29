@@ -7,11 +7,12 @@ import Data.Bits
 
 type Dim = Int
 
-wd :: Dim
-wd = 800
+data Res = Res {
+	wd :: Dim,
+	ht :: Dim
+}
 
-ht :: Dim
-ht = 600
+res = Res 800 600
 
 inRng :: CInt -> CInt -> CInt -> Bool
 inRng n floor roof = n >= floor && n <= roof
