@@ -47,6 +47,12 @@ se :: CInt -> CInt -> CInt -> CInt -> CInt
 se x y posX posY = toEnum $ fromEnum $ inRng x posX (posX + (2 * sz)) || inRng y posY (posY + (2 * sz))
 	where sz = 20
 
+diagStripe :: CInt -> CInt -> CInt -> CInt
+diagStripe x y stroke = toEnum $ fromEnum $ middle < rad && middle > -rad
+	where
+		middle = mod (x + y) stroke
+		rad = div stroke 2
+
 foreign export ccall solid :: CInt -> CInt
 foreign export ccall stripe :: CInt -> CInt -> CInt
 foreign export ccall check :: CInt -> CInt -> CInt -> CInt
@@ -55,3 +61,4 @@ foreign export ccall border :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt
 foreign export ccall prime :: CInt -> CInt
 foreign export ccall rightTri :: CInt -> CInt -> CInt
 foreign export ccall se :: CInt -> CInt -> CInt -> CInt -> CInt
+foreign export ccall diagStripe :: CInt -> CInt -> CInt -> CInt
