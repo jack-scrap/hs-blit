@@ -7,13 +7,12 @@ LDFLAGS=-lSDL2 -lSDL2_image
 ODIR=o
 
 .PHONY: all
-all: stub $(EXEC) mk_o
+all: $(EXEC) mk_o
 
-.PHONY: stub
-stub: shad.hs
+shad_stub.h: shad.hs
 	$(HC) -Wno-tabs -c -O $<
 
-$(EXEC): main.c
+$(EXEC): main.c shad_stub.h
 	$(HC) --make -no-hs-main -optc-O $< shad -o $@ $(LDFLAGS)
 
 .PHONY: mk_o
