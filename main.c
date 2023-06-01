@@ -58,7 +58,7 @@ int blitRect(unsigned char data[res[Y]][res[X]][CHAN_NO], Coord sz, Coord pos, C
 	return 0;
 }
 
-int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO], HsInt (*fn)(HsInt)) {
+int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO], HsInt32 (*fn)(HsInt32)) {
 	if (data == NULL) {
 		err(ERR_NULL_PTR);
 
