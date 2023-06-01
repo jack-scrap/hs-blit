@@ -42,6 +42,17 @@ prime n = toEnum $ fromEnum $ if n > 1
 	]
 	else False
 
+brick :: CInt -> CInt -> CInt
+brick x y = toEnum $ fromEnum $ xLocal > margin && xLocal < wd - margin && yLocal > margin && yLocal < ht - margin
+	where
+		wd = 20
+		ht = 10
+
+		xLocal = mod x wd
+		yLocal = mod y ht
+
+		margin = 1
+
 rightTri :: Idx -> Idx -> Status
 rightTri x y = toEnum $ fromEnum $ x < y
 
@@ -64,3 +75,4 @@ foreign export ccall prime :: Idx -> Status
 foreign export ccall rightTri :: Idx -> Idx -> Status
 foreign export ccall se :: Idx -> Idx -> Idx -> Idx -> Status
 foreign export ccall diagStripe :: Idx -> Idx -> Idx -> Status
+foreign export ccall brick :: Idx -> Idx -> Idx
