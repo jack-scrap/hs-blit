@@ -20,7 +20,7 @@ inRng :: CInt -> CInt -> CInt -> Bool
 inRng n floor roof = n >= floor && n <= roof
 
 solid :: CInt -> Status
-solid i = 1
+solid n = 1
 
 stripe :: CInt -> CInt -> Status
 stripe x stride = toEnum $ fromEnum $ mod x (stride * 2) > stride
