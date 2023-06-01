@@ -5,6 +5,7 @@
 
 #include "math.h"
 #include "col.h"
+#include "util.h"
 #include "err.h"
 #include "Shad_stub.h"
 
@@ -72,7 +73,12 @@ int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO], HsInt32 (*fn)(HsInt32)
 				y
 			};
 
-			int i = (st._y * res[X]) + st._x;
+			Coord bound = {
+				res[X],
+				res[Y]
+			};
+
+			int i = coordToIdx(st, bound);
 
 			if (fn(i)) {
 				if (blitPix(data, st, purple[0])) {
