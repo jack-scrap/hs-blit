@@ -3,17 +3,17 @@ HC=ghc
 
 EXEC=hs_blit
 
+BUILDDIR=build
+
+ODIR=o
+
 LDFLAGS=-lSDL2 -lSDL2_image
 HSFLAGS=-Wno-tabs
-
-BUILDDIR=build
 
 SRC=util.c err.c
 OBJ=$(SRC:%.c=$(BUILDDIR)/%.o)
 
 STUB=Shad_stub.h
-
-ODIR=o
 
 .PHONY: all
 all: mk_build $(EXEC) mk_o
