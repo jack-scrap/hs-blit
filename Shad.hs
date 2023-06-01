@@ -5,9 +5,9 @@ module Shad where
 import Foreign.C.Types
 import Data.Bits
 
-type Dim = Int
+type Dim = CInt
 
-type Status = Int
+type Status = CInt
 
 data Res = Res {
 	wd :: Dim,
