@@ -50,7 +50,7 @@ se x y posX posY = toEnum $ fromEnum $ inRng x posX (posX + (2 * sz)) || inRng y
 	where sz = 20
 
 diagStripe :: CInt -> CInt -> CInt -> Status
-diagStripe x y stroke = toEnum $ fromEnum $ mid < rad && mid > -rad
+diagStripe x y stroke = toEnum $ fromEnum $ inRng mid rad (-rad)
 	where
 		mid = mod (x + y) stroke
 		rad = div stroke 2
