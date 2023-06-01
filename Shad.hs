@@ -19,6 +19,9 @@ res = Res 800 600
 inRng :: Idx -> Idx -> Idx -> Bool
 inRng n floor roof = n >= floor && n <= roof
 
+boolToStatus :: Bool -> Status
+boolToStatus = toEnum . fromEnum
+
 solid :: Idx -> Status
 solid n = 1
 
@@ -26,16 +29,16 @@ stripe :: Idx -> Idx -> Status
 stripe x stride = toEnum $ fromEnum $ mod x (stride * 2) > stride
 
 check :: Idx -> Idx -> Idx -> Status
-check x y stride = toEnum $ fromEnum $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
+check x y stride = boolToStatus $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
 
 rect :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
-rect x y posX posY wd ht = toEnum $ fromEnum $ inRng x posX (posX + wd) && inRng y posY (posY + ht)
+rect x y posX posY wd ht = boolToStatus $ inRng x posX (posX + wd) && inRng y posY (posY + ht)
 
 border :: Idx -> Idx -> Idx -> Idx -> Idx -> Status
-border x y wd ht stroke = toEnum $ fromEnum $ not (inRng x stroke (wd - stroke)) || not (inRng y stroke (ht - stroke))
+border x y wd ht stroke = boolToStatus $ not (inRng x stroke (wd - stroke)) || not (inRng y stroke (ht - stroke))
 
 prime :: Idx -> Status
-prime n = toEnum $ fromEnum $ if n > 1
+prime n = boolToStatus $ if n > 1
 	then null [
 		x | x <- [2..n - 1],
 		mod n x == 0
@@ -43,7 +46,7 @@ prime n = toEnum $ fromEnum $ if n > 1
 	else False
 
 brick :: CInt -> CInt -> CInt
-brick x y = toEnum $ fromEnum $ xLocal > margin && xLocal < wd - margin && yLocal > margin && yLocal < ht - margin
+brick x y = boolToStatus $ xLocal > margin && xLocal < wd - margin && yLocal > margin && yLocal < ht - margin
 	where
 		wd = 20
 		ht = 10
@@ -54,14 +57,14 @@ brick x y = toEnum $ fromEnum $ xLocal > margin && xLocal < wd - margin && yLoca
 		margin = 1
 
 rightTri :: Idx -> Idx -> Status
-rightTri x y = toEnum $ fromEnum $ x < y
+rightTri x y = boolToStatus $ x < y
 
 se :: Idx -> Idx -> Idx -> Idx -> Status
-se x y posX posY = toEnum $ fromEnum $ inRng x posX (posX + (2 * sz)) || inRng y posY (posY + (2 * sz))
+se x y posX posY = boolToStatus $ inRng x posX (posX + (2 * sz)) || inRng y posY (posY + (2 * sz))
 	where sz = 20
 
 diagStripe :: Idx -> Idx -> Idx -> Status
-diagStripe x y stroke = toEnum $ fromEnum $ inRng mid rad (-rad)
+diagStripe x y stroke = boolToStatus $ inRng mid rad (-rad)
 	where
 		mid = mod (x + y) stroke
 		rad = div stroke 2
