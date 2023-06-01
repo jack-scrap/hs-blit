@@ -4,15 +4,17 @@ EXEC=hs_blit
 
 LDFLAGS=-lSDL2 -lSDL2_image
 
+STUB=Shad_stub.h
+
 ODIR=o
 
 .PHONY: all
 all: $(EXEC) mk_o
 
-Shad_stub.h: Shad.hs
+%_stub.h: %.hs
 	$(HC) -Wno-tabs -c -O $<
 
-$(EXEC): main.c Shad_stub.h
+$(EXEC): main.c $(STUB)
 	$(HC) --make -no-hs-main -optc-O $< Shad -o $@ $(LDFLAGS)
 
 .PHONY: mk_o
