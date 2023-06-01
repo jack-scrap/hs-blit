@@ -4,6 +4,7 @@ HC=ghc
 EXEC=hs_blit
 
 LDFLAGS=-lSDL2 -lSDL2_image
+HSFLAGS=-Wno-tabs
 
 BUILDDIR=build
 
@@ -21,7 +22,7 @@ $(BUILDDIR)/%.o: %.c %.h
 	$(CC) -c $< -o $@
 
 %_stub.h: %.hs
-	$(HC) -Wno-tabs -c -O $<
+	$(HC) $(HSFLAGS) -c -O $<
 
 $(EXEC): main.c $(OBJ) $(STUB)
 	$(HC) --make -no-hs-main -optc-O $< $(OBJ) Shad -o $@ $(LDFLAGS)
