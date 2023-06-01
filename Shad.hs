@@ -16,25 +16,25 @@ data Res = Res {
 
 res = Res 800 600
 
-inRng :: CInt -> CInt -> CInt -> Bool
+inRng :: Idx -> Idx -> Idx -> Bool
 inRng n floor roof = n >= floor && n <= roof
 
-solid :: CInt -> Status
+solid :: Idx -> Status
 solid n = 1
 
-stripe :: CInt -> CInt -> Status
+stripe :: Idx -> Idx -> Status
 stripe x stride = toEnum $ fromEnum $ mod x (stride * 2) > stride
 
-check :: CInt -> CInt -> CInt -> Status
+check :: Idx -> Idx -> Idx -> Status
 check x y stride = toEnum $ fromEnum $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
 
-rect :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt -> Status
+rect :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
 rect x y posX posY wd ht = toEnum $ fromEnum $ inRng x posX (posX + wd) && inRng y posY (posY + ht)
 
-border :: CInt -> CInt -> CInt -> CInt -> CInt -> Status
+border :: Idx -> Idx -> Idx -> Idx -> Idx -> Status
 border x y wd ht stroke = toEnum $ fromEnum $ not (inRng x stroke (wd - stroke)) || not (inRng y stroke (ht - stroke))
 
-prime :: CInt -> Status
+prime :: Idx -> Status
 prime n = toEnum $ fromEnum $ if n > 1
 	then null [
 		x | x <- [2..n - 1],
@@ -42,25 +42,25 @@ prime n = toEnum $ fromEnum $ if n > 1
 	]
 	else False
 
-rightTri :: CInt -> CInt -> Status
+rightTri :: Idx -> Idx -> Status
 rightTri x y = toEnum $ fromEnum $ x < y
 
-se :: CInt -> CInt -> CInt -> CInt -> Status
+se :: Idx -> Idx -> Idx -> Idx -> Status
 se x y posX posY = toEnum $ fromEnum $ inRng x posX (posX + (2 * sz)) || inRng y posY (posY + (2 * sz))
 	where sz = 20
 
-diagStripe :: CInt -> CInt -> CInt -> Status
+diagStripe :: Idx -> Idx -> Idx -> Status
 diagStripe x y stroke = toEnum $ fromEnum $ inRng mid rad (-rad)
 	where
 		mid = mod (x + y) stroke
 		rad = div stroke 2
 
-foreign export ccall solid :: CInt -> Status
-foreign export ccall stripe :: CInt -> CInt -> Status
-foreign export ccall check :: CInt -> CInt -> CInt -> Status
-foreign export ccall rect :: CInt -> CInt -> CInt -> CInt -> CInt -> CInt -> Status
-foreign export ccall border :: CInt -> CInt -> CInt -> CInt -> CInt -> Status
-foreign export ccall prime :: CInt -> Status
-foreign export ccall rightTri :: CInt -> CInt -> Status
-foreign export ccall se :: CInt -> CInt -> CInt -> CInt -> Status
-foreign export ccall diagStripe :: CInt -> CInt -> CInt -> Status
+foreign export ccall solid :: Idx -> Status
+foreign export ccall stripe :: Idx -> Idx -> Status
+foreign export ccall check :: Idx -> Idx -> Idx -> Status
+foreign export ccall rect :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
+foreign export ccall border :: Idx -> Idx -> Idx -> Idx -> Idx -> Status
+foreign export ccall prime :: Idx -> Status
+foreign export ccall rightTri :: Idx -> Idx -> Status
+foreign export ccall se :: Idx -> Idx -> Idx -> Idx -> Status
+foreign export ccall diagStripe :: Idx -> Idx -> Idx -> Status
