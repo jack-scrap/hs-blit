@@ -5,13 +5,13 @@ module Shad where
 import Foreign.C.Types
 import Data.Bits
 
-type Dim = CInt
+type Idx = CInt
 
 type Status = CInt
 
 data Res = Res {
-	wd :: Dim,
-	ht :: Dim
+	wd :: Idx,
+	ht :: Idx
 }
 
 res = Res 800 600
