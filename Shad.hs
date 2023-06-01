@@ -5,6 +5,9 @@ module Shad where
 import Foreign.C.Types
 import Data.Bits
 
+data Axis = X | Y
+	deriving Enum
+
 type Idx = CInt
 
 type Status = CInt
