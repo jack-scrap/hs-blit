@@ -6,7 +6,7 @@
 #include "math.h"
 #include "col.h"
 #include "err.h"
-#include "shad_stub.h"
+#include "Shad_stub.h"
 
 const unsigned int res[2] = {
 	800,
