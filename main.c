@@ -14,6 +14,12 @@ const unsigned int res[2] = {
 	600
 };
 
+const char* oDir = "o";
+
+const char sep = '/';
+
+const char* f = "scr.png";
+
 int t = 0;
 
 int blitPix(unsigned char data[res[Y]][res[X]][CHAN_NO], Coord st, Col col) {
@@ -164,6 +170,9 @@ int main() {
 
 	unsigned char data[res[Y]][res[X]][CHAN_NO];
 
+	char oPath[1 + 1 + 7 + 1];
+	sprintf(oPath, "%s%c%s", oDir, sep, f);
+
 	// Clear
 	clear(data);
 
@@ -187,7 +196,7 @@ int main() {
 
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_F12) {
-					scrShot("o/scr.png", win, rend);
+					scrShot(oPath, win, rend);
 				}
 			}
 		}
