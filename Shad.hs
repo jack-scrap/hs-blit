@@ -50,9 +50,9 @@ se x y posX posY = toEnum $ fromEnum $ inRng x posX (posX + (2 * sz)) || inRng y
 	where sz = 20
 
 diagStripe :: CInt -> CInt -> CInt -> Status
-diagStripe x y stroke = toEnum $ fromEnum $ middle < rad && middle > -rad
+diagStripe x y stroke = toEnum $ fromEnum $ mid < rad && mid > -rad
 	where
-		middle = mod (x + y) stroke
+		mid = mod (x + y) stroke
 		rad = div stroke 2
 
 foreign export ccall solid :: CInt -> Status
