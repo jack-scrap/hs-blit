@@ -81,4 +81,4 @@ foreign export ccall prime :: Idx -> Status
 foreign export ccall rightTri :: Idx -> Idx -> Status
 foreign export ccall se :: Idx -> Idx -> Idx -> Idx -> Status
 foreign export ccall diagStripe :: Idx -> Idx -> Idx -> Status
-foreign export ccall brick :: Idx -> Idx -> Idx
+foreign export ccall brick :: Idx -> Idx -> Status
