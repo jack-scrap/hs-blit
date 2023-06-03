@@ -78,6 +78,9 @@ diagStripe x y stroke = boolToStatus $ inRng mid rad (-rad)
 cornerFold :: Idx -> Idx -> Status
 cornerFold x y = boolToStatus $ (((fromIntegral y) / 600)) < ((fromIntegral x) * (1 / 800.0))
 
+clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
+clip x y posX posY wd ht status = boolToStatus $ (statusToBool (rect x y posX posY wd ht)) && (statusToBool status)
+
 foreign export ccall solid :: Idx -> Status
 foreign export ccall stripe :: Idx -> Idx -> Status
 foreign export ccall check :: Idx -> Idx -> Idx -> Status
@@ -89,3 +92,4 @@ foreign export ccall se :: Idx -> Idx -> Idx -> Idx -> Status
 foreign export ccall diagStripe :: Idx -> Idx -> Idx -> Status
 foreign export ccall brick :: Idx -> Idx -> Status
 foreign export ccall cornerFold :: Idx -> Idx -> Status
+foreign export ccall clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
