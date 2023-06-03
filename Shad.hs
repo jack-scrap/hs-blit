@@ -70,7 +70,7 @@ se x y posX posY = boolToStatus $ inRng x posX (posX + (2 * sz)) || inRng y posY
 	where sz = 20
 
 diagStripe :: Idx -> Idx -> Idx -> Status
-diagStripe x y stroke = boolToStatus $ inRng mid rad (-rad)
+diagStripe x y stroke = boolToStatus $ inRng mid (-rad) rad
 	where
 		mid = mod (x + y) stroke
 		rad = div stroke 2
