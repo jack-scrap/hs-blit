@@ -25,6 +25,9 @@ inRng n floor roof = n >= floor && n <= roof
 boolToStatus :: Bool -> Status
 boolToStatus = toEnum . fromEnum
 
+statusToBool :: Status -> Bool
+statusToBool = toEnum . fromIntegral
+
 solid :: Idx -> Status
 solid n = 1
 
