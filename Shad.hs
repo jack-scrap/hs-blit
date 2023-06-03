@@ -73,7 +73,7 @@ diagStripe :: Idx -> Idx -> Idx -> Status
 diagStripe x y stroke = boolToStatus $ inRng mid (-rad) rad
 	where
 		mid = mod (x + y) stroke
-		rad = div stroke 2
+		rad = stroke `div` 2
 
 cornerFold :: Idx -> Idx -> Status
 cornerFold x y = boolToStatus $ (((fromIntegral y) / 600)) < ((fromIntegral x) * (1 / 800.0))
