@@ -76,7 +76,7 @@ diagStripe x y stroke = boolToStatus $ inRng mid (-rad) rad
 		rad = stroke `div` 2
 
 cornerFold :: Idx -> Idx -> Status
-cornerFold x y = boolToStatus $ (((fromIntegral y) / 600)) < ((fromIntegral x) * (1 / 800.0))
+cornerFold x y = boolToStatus $ (((fromIntegral y) / 600)) < ((fromIntegral x) * (1 / 800))
 
 flanel :: Idx -> Idx -> Status
 flanel x y = xor (check x y 50) (check x y 30)
