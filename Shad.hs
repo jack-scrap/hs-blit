@@ -26,6 +26,9 @@ inRng n floor roof = n >= floor && n <= roof
 idxToCoord :: Idx -> Coord
 idxToCoord i = (i `mod` 800, i `div` 600)
 
+coordToIdx :: Coord -> Idx
+coordToIdx st = ((fst st) * 800) + (snd st)
+
 boolToStatus :: Bool -> Status
 boolToStatus = toEnum . fromEnum
 
