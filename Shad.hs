@@ -39,8 +39,8 @@ boolToStatus = toEnum . fromEnum
 statusToBool :: Status -> Bool
 statusToBool = toEnum . fromIntegral
 
-solid :: Idx -> Status
-solid n = 1
+solid :: Status
+solid = 1
 
 stripe :: Idx -> Idx -> Status
 stripe x stride = toEnum $ fromEnum $ mod x (stride * 2) > stride
@@ -96,7 +96,7 @@ clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
 clip x y posX posY wd ht status = boolToStatus $ (statusToBool (rect x y posX posY wd ht)) && (statusToBool status)
 
 patch :: Idx -> Status
-patch i = solid i
+patch i = solid
 	where
 		coord = idxToCoord i
 
