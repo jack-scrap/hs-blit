@@ -24,10 +24,10 @@ inRng :: Idx -> Idx -> Idx -> Bool
 inRng n floor roof = n >= floor && n <= roof
 
 idxToCoord :: Idx -> Coord
-idxToCoord i = (i `mod` 800, i `div` 600)
+idxToCoord i = (i `mod` wd res, i `div` ht res)
 
 coordToIdx :: Coord -> Idx
-coordToIdx st = ((fst st) * 800) + (snd st)
+coordToIdx st = ((fst st) * wd res) + (snd st)
 
 boolToStatus :: Bool -> Status
 boolToStatus = toEnum . fromEnum
@@ -83,7 +83,7 @@ diagStripe x y stroke = boolToStatus $ inRng mid (-rad) rad
 		rad = stroke `div` 2
 
 cornerFold :: Idx -> Idx -> Status
-cornerFold x y = boolToStatus $ (((fromIntegral y) / 600)) < ((fromIntegral x) * (1 / 800))
+cornerFold x y = boolToStatus $ (((fromIntegral y) / (fromIntegral (ht res)))) < ((fromIntegral x) * (1 / (fromIntegral (wd res))))
 
 flanel :: Idx -> Idx -> Status
 flanel x y = (check x y 50) `xor` (check x y 30)
