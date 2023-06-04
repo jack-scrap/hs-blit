@@ -43,7 +43,7 @@ solid :: Status
 solid = boolToStatus $ True
 
 stripe :: Idx -> Idx -> Status
-stripe x stride = toEnum $ fromEnum $ mod x (stride * 2) > stride
+stripe x stride = boolToStatus $ mod x (stride * 2) > stride
 
 check :: Idx -> Idx -> Idx -> Status
 check x y stride = boolToStatus $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
