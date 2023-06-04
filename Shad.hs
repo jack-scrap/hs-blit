@@ -86,7 +86,7 @@ cornerFold :: Idx -> Idx -> Status
 cornerFold x y = boolToStatus $ (((fromIntegral y) / 600)) < ((fromIntegral x) * (1 / 800))
 
 flanel :: Idx -> Idx -> Status
-flanel x y = xor (check x y 50) (check x y 30)
+flanel x y = (check x y 50) `xor` (check x y 30)
 
 clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
 clip x y posX posY wd ht status = boolToStatus $ (statusToBool (rect x y posX posY wd ht)) && (statusToBool status)
