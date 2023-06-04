@@ -84,6 +84,9 @@ flanel x y = xor (check x y 50) (check x y 30)
 clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
 clip x y posX posY wd ht status = boolToStatus $ (statusToBool (rect x y posX posY wd ht)) && (statusToBool status)
 
+patch :: Idx -> Idx -> Status
+patch x y = solid 0
+
 foreign export ccall solid :: Idx -> Status
 foreign export ccall stripe :: Idx -> Idx -> Status
 foreign export ccall check :: Idx -> Idx -> Idx -> Status
@@ -97,3 +100,5 @@ foreign export ccall brick :: Idx -> Idx -> Status
 foreign export ccall cornerFold :: Idx -> Idx -> Status
 foreign export ccall flanel :: Idx -> Idx -> Status
 foreign export ccall clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
+
+foreign export ccall patch :: Idx -> Idx -> Status

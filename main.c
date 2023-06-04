@@ -86,7 +86,7 @@ int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO], HsInt32 (*fn)(HsInt32)
 
 			int i = coordToIdx(st, bound);
 
-			if (fn(i)) {
+			if (patch(x, y)) {
 				if (blitPix(data, st, purple[0])) {
 					err(ERR_BLIT_PIX);
 				}
