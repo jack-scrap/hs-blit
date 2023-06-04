@@ -8,7 +8,7 @@ BUILDDIR=build
 ODIR=o
 
 LDFLAGS=-lSDL2 -lSDL2_image
-HSFLAGS=-Wno-tabs
+HFLAGS=-Wno-tabs
 
 SRC=util.c err.c
 OBJ=$(SRC:%.c=$(BUILDDIR)/%.o)
@@ -23,7 +23,7 @@ $(BUILDDIR)/%.o: %.c %.h
 	$(CC) -c $< -o $@
 
 %_stub.h: %.hs
-	$(HC) $(HSFLAGS) -c -O $<
+	$(HC) $(HFLAGS) -c -O $<
 
 $(EXEC): main.c $(OBJ) $(STUB)
 	$(HC) --make -no-hs-main -optc-O $< $(OBJ) $(HSRC:%.hs=%) -o $@ $(LDFLAGS)
