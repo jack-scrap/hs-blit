@@ -96,18 +96,4 @@ patch i = solid i
 	where
 		coord = idxToCoord i
 
-foreign export ccall solid :: Idx -> Status
-foreign export ccall stripe :: Idx -> Idx -> Status
-foreign export ccall check :: Idx -> Idx -> Idx -> Status
-foreign export ccall rect :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
-foreign export ccall border :: Idx -> Idx -> Idx -> Idx -> Idx -> Status
-foreign export ccall prime :: Idx -> Status
-foreign export ccall rightTri :: Idx -> Idx -> Status
-foreign export ccall se :: Idx -> Idx -> Idx -> Idx -> Status
-foreign export ccall diagStripe :: Idx -> Idx -> Idx -> Status
-foreign export ccall brick :: Idx -> Idx -> Status
-foreign export ccall cornerFold :: Idx -> Idx -> Status
-foreign export ccall flanel :: Idx -> Idx -> Status
-foreign export ccall clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
-
 foreign export ccall patch :: Idx -> Status
