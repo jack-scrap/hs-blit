@@ -13,7 +13,8 @@ HSFLAGS=-Wno-tabs
 SRC=util.c err.c
 OBJ=$(SRC:%.c=$(BUILDDIR)/%.o)
 
-STUB=Shad_stub.h
+HSRC=Shad.hs
+STUB=$(HSRC:%.hs=%_stub.h)
 
 .PHONY: all
 all: mk_build $(EXEC) mk_o
@@ -25,7 +26,7 @@ $(BUILDDIR)/%.o: %.c %.h
 	$(HC) $(HSFLAGS) -c -O $<
 
 $(EXEC): main.c $(OBJ) $(STUB)
-	$(HC) --make -no-hs-main -optc-O $< $(OBJ) Shad -o $@ $(LDFLAGS)
+	$(HC) --make -no-hs-main -optc-O $< $(OBJ) $(HSRC:%.hs=%) -o $@ $(LDFLAGS)
 
 .PHONY: mk_build
 mk_build:
