@@ -40,7 +40,7 @@ statusToBool :: Status -> Bool
 statusToBool = toEnum . fromIntegral
 
 solid :: Status
-solid = 1
+solid = boolToStatus $ True
 
 stripe :: Idx -> Idx -> Status
 stripe x stride = toEnum $ fromEnum $ mod x (stride * 2) > stride
