@@ -38,4 +38,4 @@ mk_o:
 
 .PHONY: clean
 clean:
-	rm *_stub.h *.hi $(BUILDDIR)/*.o $(EXEC)
+	rm *_stub.h *.hi *.o $(BUILDDIR)/*.o $(EXEC)
