@@ -65,7 +65,7 @@ int blitRect(unsigned char data[res[Y]][res[X]][CHAN_NO], Coord sz, Coord pos, C
 	return 0;
 }
 
-int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO], HsInt32 (*fn)(HsInt32)) {
+int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO]) {
 	if (data == NULL) {
 		err(ERR_NULL_PTR);
 
@@ -86,7 +86,7 @@ int blitShad(unsigned char data[res[Y]][res[X]][CHAN_NO], HsInt32 (*fn)(HsInt32)
 
 			int i = coordToIdx(st, bound);
 
-			if (patch(x, y)) {
+			if (patch(i)) {
 				if (blitPix(data, st, purple[0])) {
 					err(ERR_BLIT_PIX);
 				}
@@ -201,7 +201,7 @@ int main() {
 			}
 		}
 
-		blitShad(data, solid);
+		blitShad(data);
 
 		SDL_UpdateTexture(tex, &rect, surf->pixels, surf->pitch);
 
