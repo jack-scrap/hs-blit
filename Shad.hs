@@ -97,7 +97,6 @@ clip x y posX posY wd ht status = (rect x y posX posY wd ht) && (statusToBool st
 
 patch :: Idx -> Status
 patch i = boolToStatus solid
-	where
-		coord = idxToCoord i
+	where coord = idxToCoord i
 
 foreign export ccall patch :: Idx -> Status
