@@ -39,31 +39,31 @@ boolToStatus = toEnum . fromEnum
 statusToBool :: Status -> Bool
 statusToBool = toEnum . fromIntegral
 
-solid :: Status
-solid = boolToStatus $ True
+solid :: Bool
+solid = True
 
-stripe :: Idx -> Idx -> Status
-stripe x stride = boolToStatus $ mod x (stride * 2) > stride
+stripe :: Idx -> Idx -> Bool
+stripe x stride = mod x (stride * 2) > stride
 
-check :: Idx -> Idx -> Idx -> Status
-check x y stride = boolToStatus $ xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
+check :: Idx -> Idx -> Idx -> Bool
+check x y stride = xor (mod x (stride * 2) > stride) (mod y (stride * 2) > stride)
 
-rect :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
-rect x y posX posY wd ht = boolToStatus $ inRng x posX (posX + wd) && inRng y posY (posY + ht)
+rect :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Bool
+rect x y posX posY wd ht = inRng x posX (posX + wd) && inRng y posY (posY + ht)
 
-border :: Idx -> Idx -> Idx -> Idx -> Idx -> Status
-border x y wd ht stroke = boolToStatus $ not (inRng x stroke (wd - stroke)) || not (inRng y stroke (ht - stroke))
+border :: Idx -> Idx -> Idx -> Idx -> Idx -> Bool
+border x y wd ht stroke = not (inRng x stroke (wd - stroke)) || not (inRng y stroke (ht - stroke))
 
-prime :: Idx -> Status
-prime n = boolToStatus $ if n > 1
+prime :: Idx -> Bool
+prime n = if n > 1
 	then null [
 		x | x <- [2..n - 1],
 		mod n x == 0
 	]
 	else False
 
-brick :: CInt -> CInt -> CInt
-brick x y = boolToStatus $ xLocal > margin && xLocal < wd - margin && yLocal > margin && yLocal < ht - margin
+brick :: CInt -> CInt -> Bool
+brick x y = xLocal > margin && xLocal < wd - margin && yLocal > margin && yLocal < ht - margin
 	where
 		wd = 20
 		ht = 10
@@ -73,30 +73,30 @@ brick x y = boolToStatus $ xLocal > margin && xLocal < wd - margin && yLocal > m
 
 		margin = 1
 
-rightTri :: Idx -> Idx -> Status
-rightTri x y = boolToStatus $ x < y
+rightTri :: Idx -> Idx -> Bool
+rightTri x y = x < y
 
-se :: Idx -> Idx -> Idx -> Idx -> Status
-se x y posX posY = boolToStatus $ inRng x posX (posX + (2 * sz)) || inRng y posY (posY + (2 * sz))
+se :: Idx -> Idx -> Idx -> Idx -> Bool
+se x y posX posY = inRng x posX (posX + (2 * sz)) || inRng y posY (posY + (2 * sz))
 	where sz = 20
 
-diagStripe :: Idx -> Idx -> Idx -> Status
-diagStripe x y stroke = boolToStatus $ inRng mid (-rad) rad
+diagStripe :: Idx -> Idx -> Idx -> Bool
+diagStripe x y stroke = inRng mid (-rad) rad
 	where
 		mid = mod (x + y) stroke
 		rad = stroke `div` 2
 
-cornerFold :: Idx -> Idx -> Status
-cornerFold x y = boolToStatus $ (((fromIntegral y) / (fromIntegral (ht res)))) < ((fromIntegral x) * (1 / (fromIntegral (wd res))))
+cornerFold :: Idx -> Idx -> Bool
+cornerFold x y = (((fromIntegral y) / (fromIntegral (ht res)))) < ((fromIntegral x) * (1 / (fromIntegral (wd res))))
 
-flanel :: Idx -> Idx -> Status
+flanel :: Idx -> Idx -> Bool
 flanel x y = (check x y 50) `xor` (check x y 30)
 
-clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Status
-clip x y posX posY wd ht status = boolToStatus $ (statusToBool (rect x y posX posY wd ht)) && (statusToBool status)
+clip :: Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Idx -> Bool
+clip x y posX posY wd ht status = (rect x y posX posY wd ht) && (statusToBool status)
 
 patch :: Idx -> Status
-patch i = solid
+patch i = boolToStatus solid
 	where
 		coord = idxToCoord i
 
