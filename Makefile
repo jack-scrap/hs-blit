@@ -23,7 +23,7 @@ $(BUILDDIR)/%.o: %.c %.h
 	$(CC) -c $< -o $@
 
 %_stub.h: %.hs
-	$(HC) $(HFLAGS) -c -O $<
+	$(HC) $(HFLAGS) -c -O $< -o $@
 
 $(EXEC): main.c $(OBJ) $(STUB)
 	$(HC) --make -no-hs-main -optc-O $< $(OBJ) $(HSRC:%.hs=%) -o $@ $(LDFLAGS)
