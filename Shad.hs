@@ -9,6 +9,7 @@ data Axis = X | Y
 	deriving Enum
 
 type Idx = CInt
+type Coord = (Idx, Idx)
 
 type Status = CInt
 
@@ -22,7 +23,7 @@ res = Res 800 600
 inRng :: Idx -> Idx -> Idx -> Bool
 inRng n floor roof = n >= floor && n <= roof
 
-idxToCoord :: Idx -> (Idx, Idx)
+idxToCoord :: Idx -> Coord
 idxToCoord i = (i `mod` 800, i `div` 600)
 
 boolToStatus :: Bool -> Status
